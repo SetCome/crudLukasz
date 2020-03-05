@@ -59,6 +59,8 @@ function usuńElement(tab,n) {
     return [...początek, ...koniec];
 }
 
+app.use(express.static('public'));
+
 app.delete('/api/movies/:id', (req, res) => {
     const id = req.params.id;
     if(!movies[id]) {
@@ -68,5 +70,7 @@ app.delete('/api/movies/:id', (req, res) => {
     movies = usuńElement(movies, id);
     res.send(movies)
     });
+
+    
 
 app.listen(3000, ()=> console.log('Running...'))
